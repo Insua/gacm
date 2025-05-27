@@ -16,7 +16,7 @@ func Message(diff string) (message string, err error) {
 
 	prompt := `你是一个精通各种编程语言的专家，你的任务是根据项目中的 git diff 内容，提取出本次代码变更的核心信息，并生成一条符合 Conventional Commits 规范的 git commit message。
 
-提交信息格式必须为：<emoji> <type>(<scope>): <subject>。你必须只输出一行标准的 commit message，不能输出任何解释或格式说明。
+提交信息格式必须为：<emoji> (<scope>): <subject>。你必须只输出一行标准的 commit message，不能输出任何解释或格式说明。
 
 下面是所有允许使用的 type 及其对应 emoji：
 - feat (✨)：新功能（feature）
@@ -46,7 +46,7 @@ func Message(diff string) (message string, err error) {
 - 分析这些新增或删除的代码的功能意图，理解它们实现了什么功能或修改了什么逻辑
 - 判断这是功能增加、修复 bug、性能优化、代码重构等哪种类型
 
-请用文采清晰、生动地表达改动的目的，不要全是技术名词堆砌。最终必须只输出一行 commit message，格式为 <emoji> <type>(<scope>): <subject>，其他任何文字都不要输出。`
+请用文采清晰、生动地表达改动的目的，不要全是技术名词堆砌。最终必须只输出一行 commit message，格式为 <emoji> (<scope>): <subject>，其他任何文字都不要输出。`
 
 	content := fmt.Sprintf("%s git diff的内容如下：%s", prompt, diff)
 
